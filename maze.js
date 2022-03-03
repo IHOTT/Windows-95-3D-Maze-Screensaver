@@ -259,11 +259,11 @@ window.onload = function() {
 				};
 				picImg.src = './pic.bmp'; 
 			};
-			ceilingImg.src = './ceiling2.bmp';
+			ceilingImg.src = './pretty-circle.gif';
 		};
 		floorImg.src = './floor.bmp';
 	};
-	wallImg.src = './2d_time_waffle.png';    
+	wallImg.src = './2d_time_waffle-dots.png';    
 	       
 }
 
