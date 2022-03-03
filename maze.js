@@ -521,7 +521,7 @@ var render = function(){
 		[theta,eyeX,eyeY,dtheta,deyeX,deyeY]=nextMove(theta,eyeX,eyeY,dtheta,deyeX,deyeY);
 
 		// whyyyyy do they call this twice?? rotates super slow if not
-		[theta,eyeX,eyeY,dtheta,deyeX,deyeY]=nextMove(theta,eyeX,eyeY,dtheta,deyeX,deyeY);
+		//[theta,eyeX,eyeY,dtheta,deyeX,deyeY]=nextMove(theta,eyeX,eyeY,dtheta,deyeX,deyeY);
 	}
 	[rattheta,ratX,ratY,ratdtheta,ratdX,ratdY]=nextMove(rattheta,ratX,ratY,ratdtheta,ratdX,ratdY);
 	while (ratdtheta){
@@ -597,17 +597,17 @@ function nextMove(theta,X,Y,dtheta,dX,dY)
 			dY = ((direction==2)-(direction==0))/100;
 			return [theta,X+dX,Y+dY,0,dX,dY];
 		} else if (walls[(direction+3)%4]==1) {
-			dtheta=-1 * Math.PI/180.0;
+			dtheta=-2 * Math.PI/180.0;
 			return [theta+dtheta,X,Y,dtheta,0,0];
 		} else if (walls[direction]==1){
 			dX = ((direction==1)-(direction==3))/100;
 			dY = ((direction==2)-(direction==0))/100;
 			return [theta,X+dX,Y+dY,0,dX,dY];
 		} else if (walls[(direction+1)%4]==1){
-			dtheta=1 * Math.PI/180.0;
+			dtheta=2 * Math.PI/180.0;
 			return [theta+dtheta,X,Y,dtheta,0,0];
 		} else {
-			dtheta=-1 * Math.PI/180.0;
+			dtheta=-2 * Math.PI/180.0;
 			return [theta+dtheta,X,Y,dtheta,0,0];
 		}		
 	}
