@@ -263,7 +263,7 @@ window.onload = function() {
 		};
 		floorImg.src = './floor.bmp';
 	};
-	wallImg.src = './wall.bmp';    
+	wallImg.src = './2d_time_waffle.png';    
 	       
 }
 
