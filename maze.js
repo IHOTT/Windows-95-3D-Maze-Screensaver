@@ -32,7 +32,7 @@ var height =0;
 
 var near = 0.01;
 var far = 50.0;
-var fovy = 90;  // Field-of-view in Y direction angle (in degrees)
+var fovy = 100;  // Field-of-view in Y direction angle (in degrees)
 var aspect;     // Viewport aspect ratio
 var eye, at, up;
 
@@ -249,21 +249,21 @@ window.onload = function() {
 
 									render(); 
 								};
-								ratImg.src = './rat.png'; 
+								ratImg.src = './furret.png'; 
 							};
-							openImg.src = './gl.png'; 
+							openImg.src = './IHOTT-2077.png'; 
 						};
 						finImg.src = './fin.png'; 
 					};
 					startImg.src = './start2.png'; 
 				};
-				picImg.src = './pic.bmp'; 
+				picImg.src = './restaurant.png'; 
 			};
-			ceilingImg.src = './pretty-circle.gif';
+			ceilingImg.src = './seamless-space.png';
 		};
-		floorImg.src = './floor.bmp';
+		floorImg.src = './dot-gradient.png';
 	};
-	wallImg.src = './2d_time_waffle-dots.png';    
+	wallImg.src = './2d_time_waffle-gradient.png';    
 	       
 }
 
@@ -477,14 +477,6 @@ var render = function(){
 			lighting=!lighting;
 		}
 	}
-	canvas.addEventListener("mousemove", function() {
-		var curTime = new Date();
-		if (curTime-startTime>3000){
-			window.location.href = "desktop/index.html"
-			startTime = curTime;
-		}
-	});
-
 
 	gl.uniform1i(gl.getUniformLocation(program, "lighting"),lighting);
 
@@ -527,6 +519,8 @@ var render = function(){
 		}
 	} else { 
 		[theta,eyeX,eyeY,dtheta,deyeX,deyeY]=nextMove(theta,eyeX,eyeY,dtheta,deyeX,deyeY);
+
+		// whyyyyy do they call this twice?? rotates super slow if not
 		[theta,eyeX,eyeY,dtheta,deyeX,deyeY]=nextMove(theta,eyeX,eyeY,dtheta,deyeX,deyeY);
 	}
 	[rattheta,ratX,ratY,ratdtheta,ratdX,ratdY]=nextMove(rattheta,ratX,ratY,ratdtheta,ratdX,ratdY);
@@ -583,6 +577,7 @@ function nextMove(theta,X,Y,dtheta,dX,dY)
 	if (degtheta %90) {
 		return [theta+dtheta,X,Y,dtheta,dX,dY];
 	} else if ((X+.5)%1 || (Y+.5)%1) {
+		// here's where i'd adjust the dx and dy applied... but sometimes that messes things up??
 		return [theta,X+dX,Y+dY,dtheta,dX,dY];
 	} else {//new move
 		var direction = ((degtheta %360 /90)+5 )%4;		
