@@ -32,7 +32,7 @@ var height =0;
 
 var near = 0.01;
 var far = 50.0;
-var fovy = 100;  // Field-of-view in Y direction angle (in degrees)
+var fovy = 90;  // Field-of-view in Y direction angle (in degrees)
 var aspect;     // Viewport aspect ratio
 var eye, at, up;
 
